@@ -1,11 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import MainContainer from './main/mainContainer';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavAndMain from "./main/navAndMain";
 
 function App() {
   return (
     <div className="App">
-      <MainContainer></MainContainer>
+      <NavAndMain />
+      {/* <NavbarContainer />
+      <MainContainer /> */}
     </div>
   );
 }
