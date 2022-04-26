@@ -1,8 +1,6 @@
-import MainContainer from "./mainContainer"
+import MainContainer from "./mainContainer";
 
-const NavAndMain = ()=>{
-    return(  
-        <MainContainer />
-    )
-}
-export default NavAndMain
+const NavAndMain = () => {
+  return <MainContainer />;
+};
+export default NavAndMain;
