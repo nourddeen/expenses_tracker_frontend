@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import NavbarContainer from "./navbar/navbar";
 import { Route, Routes } from "react-router-dom";
 import NewCategoryComponent from "./newCategoryComponent/newCategoryComponent";
+import Charts from "./charts/charts";
 import CategoryContainer from "./categoryContainer/categoryContainer";
 import api from "./api";
 
@@ -88,6 +89,7 @@ const AuthenticatedContainer = (props) => {
           }
           path="/create"
         />
+        <Route element={<Charts />} path="/chart" />
       </Routes>
     </div>
   );

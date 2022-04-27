@@ -9,9 +9,9 @@ const NavbarContainer = (props) => {
     return parsed;
   };
   return (
-    <Navbar bg="light" variant="light">
+    <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand>
           <h1>ExpensesTracker</h1>
         </Navbar.Brand>
         <Nav className="me-auto">
@@ -19,6 +19,7 @@ const NavbarContainer = (props) => {
             <>
               <Nav.Link href="/">home</Nav.Link>
               <Nav.Link href="/create">create category</Nav.Link>
+              <Nav.Link href="/chart">chart</Nav.Link>
               <Nav.Link onClick={props.logout}>logout</Nav.Link>
               {/* <Nav>welcome {userName}</Nav> */}
             </>
