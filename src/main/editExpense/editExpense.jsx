@@ -17,7 +17,6 @@ const EditExpense = (props) => {
     });
   };
   const submitUpdate = (e) => {
-    console.log("here");
     e.preventDefault();
     props.updateExpense(props.expense.id, updateExpense);
   };

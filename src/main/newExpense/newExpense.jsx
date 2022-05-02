@@ -3,7 +3,7 @@ import { useState } from "react";
 const NewExpense = (props) => {
   const defaultState = {
     amount: "",
-    date: "",
+    date: new Date().toISOString().split("T")[0],
     details: "",
     category: props.categoryid,
   };

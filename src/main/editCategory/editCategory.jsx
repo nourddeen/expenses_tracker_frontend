@@ -14,7 +14,6 @@ const UpdateCategory = (props) => {
   };
   const submitUpdateCategory = (e) => {
     e.preventDefault();
-    console.log("here");
     props.updateCategory(props.category.id, updateCategory);
   };
   return (

@@ -24,15 +24,36 @@ const makeApiCall = ({
 };
 
 const exported = {
-  getExpenses: async (token) => {
-    const expensesApi = await makeApiCall({ token, endpoint: "api/expenses" });
-    const parsedExpenses = await expensesApi.json();
-    return parsedExpenses;
+  setAuthHeader,
+  getExpenses: async (token, fromDate, toDate) => {
+    let endpoint = "api/expenses";
+    if (fromDate && toDate) {
+      endpoint += `?from_date=${fromDate}&to_date=${toDate}`;
+    } else if (fromDate) {
+      endpoint += `?from_date=${fromDate}`;
+    } else if (toDate) {
+      endpoint += `?to_date=${toDate}`;
+    }
+
+    try {
+      const expensesApi = await makeApiCall({ token, endpoint });
+      const parsedExpenses = await expensesApi.json();
+      return parsedExpenses;
+    } catch (err) {
+      console.log(err);
+    }
   },
   getCategory: async (token) => {
-    const categoryApi = await makeApiCall({ token, endpoint: "api/category" });
-    const parsedCategory = await categoryApi.json();
-    return parsedCategory;
+    try {
+      const categoryApi = await makeApiCall({
+        token,
+        endpoint: "api/category",
+      });
+      const parsedCategory = await categoryApi.json();
+      return parsedCategory;
+    } catch (err) {
+      console.log(err);
+    }
   },
   createNewExpense: async (token, newExpense) => {
     const data = await makeApiCall({
@@ -95,6 +116,37 @@ const exported = {
       endpoint: `api/category/${categoryId}`,
       method: "PUT",
       body: `${JSON.stringify(categoryToUpdate)}`,
+      additionalHeaders: { "Content-Type": "application/json" },
+    });
+  },
+  getProfile: async (token) => {
+    try {
+      const profileApi = await makeApiCall({ token, endpoint: "api/profile" });
+      const parsedprofile = await profileApi.json();
+      return parsedprofile;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  createNewProfile: async (token, newProfile) => {
+    const data = await makeApiCall({
+      token,
+      endpoint: "api/profile",
+      method: "POST",
+      body: `${JSON.stringify(newProfile)}`,
+      additionalHeaders: {
+        "Content-Type": "application/json",
+      },
+    });
+    const parsedCategory = await data.json();
+    return parsedCategory;
+  },
+  updateProfile: async (token, profileId, profileToUpdate) => {
+    await makeApiCall({
+      token,
+      endpoint: `api/profile/${profileId}`,
+      method: "PUT",
+      body: `${JSON.stringify(profileToUpdate)}`,
       additionalHeaders: { "Content-Type": "application/json" },
     });
   },
