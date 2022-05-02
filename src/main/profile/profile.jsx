@@ -1,6 +1,7 @@
 import { Form, Button, InputGroup, FormControl } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+
 const Profile = (props) => {
   let navigate = useNavigate();
   const [newProfile, setNewProfile] = useState({
@@ -8,7 +9,6 @@ const Profile = (props) => {
   });
   const [updateProfile, setUpdateProfile] = useState({
     income: "",
-    id: "",
   });
   const handleInputChange = (e) => {
     setNewProfile({
@@ -17,24 +17,29 @@ const Profile = (props) => {
     });
     setUpdateProfile({ ...updateProfile, [e.target.name]: e.target.value });
   };
-
+  console.log(props.profile);
   const submitNewProfile = (e) => {
     e.preventDefault();
-    if (props.profile.id) {
+    if (props.profile === undefined) {
       try {
-        console.log("update");
-        props.updateProfile(props.profile.id, updateProfile);
-        console.log(newProfile);
+        console.log("create");
+        props.createNewProfile(newProfile);
         navigate("/", { replace: true });
       } catch (err) {
         console.log(err);
       }
     } else {
-      console.log("create");
-      props.createNewProfile(newProfile);
-      navigate("/", { replace: true });
+      try {
+        console.log("update");
+        props.updateProfile(props.profile.id, updateProfile);
+        console.log(updateProfile);
+        navigate("/", { replace: true });
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
+
   return (
     <div>
       <br />

@@ -123,6 +123,7 @@ const AuthenticatedContainer = (props) => {
               profile={profile[0]}
               updateProfile={updateProfile}
               createNewProfile={createNewProfile}
+              loadProfile={loadProfile}
             />
           }
           path="/profile"
