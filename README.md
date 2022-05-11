@@ -8,4 +8,4 @@ Utilized react bootstrap Accordion to present the categories and inside each cat
 This app would still need a user login function to be fully useful, and it will be added in the near future. 
 each category and expense can be updated and deleted.
 
-can testing using (nourddeen) as username and password.
+test using (nourddeen) as username and password.
